@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Todo proyecto comienza con el tema de las rutas
+
+Route::get('/', 'UserController@index');
+Route::post('users', 'UserController@store')->name('users.store');
+Route::get('users/{user}', 'UserController@destroy')->name('users.destroy');
