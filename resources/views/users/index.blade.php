@@ -13,27 +13,35 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Crud System</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-        </div>
-    </nav>
-
     <h1 class="text-md-center">CRUD SYSTEM</h1>
     <hr>
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-sm-8 mx-auto">
+            <div class="col-sm-10 mx-auto">
+                <div class="card shadow-lg mb-4 border-0">
+                    <div class="car-card-body">
+                        <form action="{{ route('users.store')}}" method="POST">
+                            <div class="form-row">
+                                <div class="col-sm-3">
+                                    <input type="text" name="name" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div clas="col-auto">
+                                    @csrf
+                                    <!-- We cen use button and input to send information using post -->
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
                 <table class="table table-hover">
                     <thead class="thead-dark">
                         <tr>
@@ -55,12 +63,7 @@
                                 <form action="{{ route('users.destroy', $user) }}" method="POST">
                                     @method('DELETE')
                                     @csrf()
-                                    <input 
-                                        type="submit"
-                                        value="Eliminar"
-                                        class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Are you sure delete {{$user->name}}?')"
-                                    >
+                                    <input type="submit" value="Eliminar" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure delete {{$user->name}}?')">
                                 </form>
                             </td>
                         </tr>
