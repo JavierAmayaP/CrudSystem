@@ -21,6 +21,14 @@
             <div class="col-sm-10 mx-auto">
                 <div class="card shadow-lg mb-4 border-0">
                     <div class="car-card-body">
+                        <!-- $errors is a global variable of laravel which save all errors-->
+                        @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                            - {{ $error }} <br>
+                            @endforeach
+                        </div>
+                        @endif
                         <form action="{{ route('users.store')}}" method="POST">
                             <div class="form-row">
                                 <div class="col-sm-3">
@@ -63,7 +71,7 @@
                                 <form action="{{ route('users.destroy', $user) }}" method="POST">
                                     @method('DELETE')
                                     @csrf()
-                                    <input type="submit" value="Eliminar" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure delete {{$user->name}}?')">
+                                    <input type="submit" value="Delete" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure delete {{$user->name}}?')">
                                 </form>
                             </td>
                         </tr>
