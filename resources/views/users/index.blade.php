@@ -32,10 +32,10 @@
                         <form action="{{ route('users.store')}}" method="POST">
                             <div class="form-row">
                                 <div class="col-sm-3">
-                                    <input type="text" name="name" class="form-control" placeholder="Name">
+                                    <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                    <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="password" name="password" class="form-control" placeholder="Password">

@@ -28,13 +28,13 @@ class UserController extends Controller
             'name' => 'required',
             // Unique:users look for the email in user table verifing if this one is unique.
             'email' => 'required|email|unique:users',
-            'pasword' => 'required|min:8',
+            'password' => 'required|min:8'
         ]);
 
         User::create([ 
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password
+            'password' => bcrypt($request->password)
         ]);
 
         // back() allowed me to return information to the last route
